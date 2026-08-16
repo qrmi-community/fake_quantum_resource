@@ -49,6 +49,7 @@ For more details of this API simulator, refer [README](./docs/simulator/README.m
 
 * [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/getting-started/installation)
 * Docker Compose (bundled with Docker Desktop / `docker compose`) or `podman-compose`
+* QRMI (IBM) and the workload manager's plugin/module (e.g., Slurm's SPANK plugin) already deployed on the cluster you'll be testing against
 
 ## Installation
 
