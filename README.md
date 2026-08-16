@@ -60,8 +60,8 @@ QSASIM_IAM_APIKEY=myapikey
 QSASIM_SERVICE_CRN=myinstance
 QSASIM_BIND_PORT=8292
 PYTHONUNBUFFERED=1
-MINIO_ACCESS_KEY=bbFJoygjrP5BdqnQ
-MINIO_SECRET_KEY=CAMHACH4bFlr0R2E
+MINIO_ACCESS_KEY=myaccesskey
+MINIO_SECRET_KEY=mysecretkey
 MINIO_BUCKET_NAME=mybucket
 MINIO_PORT=9000
 MINIO_CONSOLE_PORT=9001
@@ -112,8 +112,8 @@ On each Slurm node that will run quantum jobs, define the resource in `/etc/slur
     "QRMI_IBM_QS_IAM_ENDPOINT": "http://192.168.1.128:8292",
     "QRMI_IBM_QS_IAM_APIKEY": "myapikey",
     "QRMI_IBM_QS_SERVICE_CRN": "myinstance",
-    "QRMI_IBM_QS_AWS_ACCESS_KEY_ID": "bbFJoygjrP5BdqnQ",
-    "QRMI_IBM_QS_AWS_SECRET_ACCESS_KEY": "CAMHACH4bFlr0R2E",
+    "QRMI_IBM_QS_AWS_ACCESS_KEY_ID": "myaccesskey",
+    "QRMI_IBM_QS_AWS_SECRET_ACCESS_KEY": "mysecretkey",
     "QRMI_IBM_QS_S3_ENDPOINT": "http://192.168.1.128:9000",
     "QRMI_IBM_QS_S3_BUCKET": "mybucket",
     "QRMI_IBM_QS_S3_REGION": "us-east"
