@@ -1,0 +1,38 @@
+services:
+  qsa_sim:
+    build: .
+    ports:
+      - ${QSASIM_BIND_PORT}:${QSASIM_BIND_PORT}
+    env_file:
+      - .env
+
+  minio:
+    image: minio/minio:latest
+    ports:
+      - ${MINIO_PORT:-9000}:9000
+      - ${MINIO_CONSOLE_PORT:-9001}:9001
+    volumes:
+      - ./.data/minio/data:/export
+      - ./.data/minio/config:/root/.minio
+    environment:
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minio}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minio123}
+    command: server /export --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set myminio http://minio:9000 ${MINIO_ACCESS_KEY:-minio} ${MINIO_SECRET_KEY:-minio123};
+      /usr/bin/mc mb myminio/${MINIO_BUCKET_NAME:-mybucket} --ignore-existing;
+      /usr/bin/mc anonymous set public myminio/${MINIO_BUCKET_NAME:-mybucket};
+      exit 0;
+      "

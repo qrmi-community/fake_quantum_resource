@@ -1,0 +1,15 @@
+PyYAML~=6.0
+uvicorn[standard]
+fastapi[standard]
+qiskit-aer>=0.17.1
+qiskit_ibm_runtime>=0.40.1
+qiskit_qasm3_import
+sympy>=1.13
+urllib3>=2.2.3
+boto3
+pyjwt
+
+# Style and Lint: Following Qiskit 1.2
+black[jupyter]>=26.3.1
+ruff==0.0.267
+pylint==3.2.3
